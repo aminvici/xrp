@@ -5,10 +5,12 @@ set -ex
 echo $(nproc)
 docker login -u rippled \
     -p ${ARTIFACTORY_DEPLOY_KEY_RIPPLED} ${ARTIFACTORY_HUB}
-apk add \
+apk add --no-cache \
     bash util-linux coreutils binutils grep \
     make ninja cmake build-base gcc g++ abuild git \
     python3 python3-dev
+apk add --no-cache py3-pip || pip3 --version
+pip3 install --upgrade pip setuptools
 pip3 install awscli
 # list curdir contents to build log:
 ls -la

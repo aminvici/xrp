@@ -25,10 +25,10 @@ done
 echo "{ \"debs\": {" > "${TOPDIR}/files.info"
 for deb in ${RIPPLED_PKG} ${RIPPLED_DEV_PKG} ${RIPPLED_DBG_PKG} ; do
     # first item doesn't get a comma separator
-    if [ $deb != $RIPPLED_PKG ] ; then
+    if [ "$deb" != "$RIPPLED_PKG" ] ; then
         echo "," >> "${TOPDIR}/files.info"
     fi
-    echo "\"${deb}\"": | tee -a "${TOPDIR}/files.info"
+    echo "\"${deb}\":" | tee -a "${TOPDIR}/files.info"
     ca="${CURLARGS}"
     if [ "${action}" = "PUT" ] ; then
         url="https://${ARTIFACTORY_HOST}/artifactory/${DEB_REPO}/pool/${COMPONENT}/${deb}${DEB_MATRIX}"
@@ -53,10 +53,10 @@ RIPPLED_SRC=$(ls rippled-[0-9]*.src.rpm)
 echo "\"rpms\": {" >> "${TOPDIR}/files.info"
 for rpm in ${RIPPLED_PKG} ${RIPPLED_DEV_PKG} ${RIPPLED_DBG_PKG} ; do
     # first item doesn't get a comma separator
-    if [ $rpm != $RIPPLED_PKG ] ; then
+    if [ "$rpm" != "$RIPPLED_PKG" ] ; then
         echo "," >> "${TOPDIR}/files.info"
     fi
-    echo "\"${rpm}\"": | tee -a "${TOPDIR}/files.info"
+    echo "\"${rpm}\":" | tee -a "${TOPDIR}/files.info"
     ca="${CURLARGS}"
     if [ "${action}" = "PUT" ] ; then
         url="https://${ARTIFACTORY_HOST}/artifactory/${RPM_REPO}/${COMPONENT}/"
