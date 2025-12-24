@@ -12,7 +12,7 @@ RIPPLED=${RIPPLED:-build/rippled}
 # Additional arguments to rippled.
 RIPPLED_ARGS=${RIPPLED_ARGS:-}
 
-function join_by { local IFS="$1"; shift; echo "$*"; }
+join_by() { local IFS="$1"; shift; echo "$*"; }
 
 declare -a manual_tests=(
   'beast.chrono.abstract_clock'

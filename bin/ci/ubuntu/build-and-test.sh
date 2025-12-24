@@ -105,7 +105,7 @@ echo "using APP_PATH: ${APP_PATH}"
 # See what we've actually built
 ldd ${APP_PATH}
 
-function join_by { local IFS="$1"; shift; echo "$*"; }
+join_by() { local IFS="$1"; shift; echo "$*"; }
 
 # This is a list of manual tests
 # in rippled that we want to run
